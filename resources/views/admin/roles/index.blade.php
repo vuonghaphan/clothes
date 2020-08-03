@@ -8,7 +8,11 @@
                 <li class="breadcrumb-item active" aria-current="page">Vai trò</li>
             </ol>
         </nav>
+
+        @can('role_add')
         <a href="{{ route('role.create') }}"><button type="button" class="btn btn-info">Thêm mới</button></a>
+        @endcan
+
         <div class="row mt">
             <div class="col-md-12">
                 <div class="card-header py-3">
@@ -31,13 +35,20 @@
                                 <td>{{ $data->name }}</td>
                                 <td>{{ $data->display_name }}</td>
                                 <td>
-                                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+
+                                    @can('role_edit')
                                     <a href="{{ route('role.edit',$data->id) }}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                                    @endcan
+
+                                    @can('role_delete')
                                     <button class="btn btn-danger btn-xs delRoleJS"data-toggle="modal"
-                                    data-target="#delRoleModal"
-                                    data-id={{ $data->id }}
-                                    data-name={{ $data->name }}>
-                                    <i class="fa fa-trash-o "></i></button></a>
+                                        data-target="#delRoleModal"
+                                        data-id={{ $data->id }}
+                                        data-name={{ $data->name }}>
+                                        <i class="fa fa-trash-o "></i>
+                                    </button>
+                                    @endcan
+
                                 </td>
                             </tr>
                             @endforeach

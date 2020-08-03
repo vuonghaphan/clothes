@@ -18,7 +18,7 @@
                 <th scope="row">{{ $key + 1 }}</th>
                 <td>{{ $data->name }}</td>
                 <td>{{ $data->slug }}</td>
-                <td>{{ optional($data->Category)->name }}</td>
+                <td>{{ $data->category->name }}</td>
                 <td>
                     <img width="100px" height="130px" src="{{asset($data->img_path)}}">
                 </td>
@@ -33,8 +33,19 @@
                 </td>
                 <td><span class="label label-{{ $data->hot == 0 ? 'primary' : 'danger' }} label-mini">{{ $data->hot == 1 ? 'Hot' : 'Không' }}</span></td>
                 <td>
-                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                    <a href="{{ route('product.edit', $data->id)}}" type="button" ><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                    <a href="" type="button" >
+                        <button class="btn btn-warning btn-xs"><i class="fa fa-image "></i>
+                        </button>
+                    </a>
+                    @can('product_edit')
+                    <a href="{{ route('product.edit', $data->id)}}" type="button" >
+                        <button class="btn btn-primary btn-xs"><i class="fa fa-pencil "></i>
+                        </button>
+                    </a>
+                    @endcan
+
+
+                    @can('product_delete')
                     <button class="btn btn-danger btn-xs delPrdJS"
                         data-toggle="modal"
                         data-target="#delProductModal"
@@ -43,6 +54,7 @@
                         >
                         <i class="fa fa-trash-o "></i>
                     </button>
+                    @endcan
                 </td>
             </tr>
         </tbody>

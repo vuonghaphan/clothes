@@ -8,7 +8,9 @@
                 <li class="breadcrumb-item active" aria-current="page">Thành viên</li>
             </ol>
         </nav>
+        @can('member_add')
         <a href="{{ route('member.create') }}"><button type="button" class="btn btn-info">Thêm mới</button></a>
+        @endcan
 
         <!-- table -->
         @include('admin.members.components.table-components')

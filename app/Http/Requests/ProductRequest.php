@@ -28,7 +28,7 @@ class ProductRequest extends FormRequest
                 "quantity"=> "required|numeric",
                 "price"=> "required|numeric",
                 "description"=> "required|min:2",
-                "article"=> "required|min:2",
+                "article"=> "required|min:2|max:1000",
                 "img"=> ($this->product ? 'nullable' : 'required')."|image"
             ];
         }

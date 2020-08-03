@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use App\Models\Product;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -111,9 +112,13 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::find($id);
+        if(($category->products)->count() > 0){
+            return response()->json(['message'=>'Danh mục hiện còn sản phẩm', 'code' => 202], 202);
+        } 
         $category->delete();
         $categories = Category::all();
         $tableComponents = view('admin.categories.components.table-components', compact('categories'))->render();
         return response()->json(['message'=>'Xóa danh mục thành công', 'tableComponents'=> $tableComponents, 'code'=> 200 ], 200);
+
     }
 }

@@ -19,7 +19,7 @@
                 <div class="card-header py-3">
                     <h3 class="m-0 font-weight-bold text-info">Danh sách danh mục</h3>
                 </div>
-                <div class="card-body">
+                <div class="content-panel">
                     @include('admin.categories.components.table-components')
                 </div>
             </div>

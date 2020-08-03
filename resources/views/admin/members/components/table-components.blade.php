@@ -25,11 +25,22 @@
                             <img src="{{$data->avatar}}" width="90" height="120"></td>
                         <td>{{ ($data->roles)->pluck('name')->implode(' , ') ?? '' }}</td>
                         <td>
-                            <button class="btn btn-success btn-xs "><i class="fa fa-check "></i></button>
-                            <a href="{{ route('member.edit',$data->id) }}"><button class="btn btn-primary btn-xs "><i class="fa fa-pencil "></i></button></a>
-                            <button class="btn btn-danger btn-xs delMember" data-toggle="modal"
-                            data-target="#delMemberModal" data-id="{{ $data->id }}" data-name="{{ $data->name }}"
-                            ><i class="fa fa-trash-o "></i></button>
+
+                            @can('member_edit')
+                            <a href="{{ route('member.edit',$data->id) }}">
+                                <button class="btn btn-primary btn-xs ">
+                                    <i class="fa fa-pencil "></i>
+                                </button>
+                            </a>
+                            @endcan
+
+                            @can('member_delete')
+                            <button class="btn btn-danger btn-xs delMember" data-toggle="modal" data-target="#delMemberModal"
+                                data-id="{{ $data->id }}" data-name="{{ $data->name }}"
+                                ><i class="fa fa-trash-o "></i>
+                            </button>
+                            @endcan
+
                         </td>
                     </tr>
                     @endforeach

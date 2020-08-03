@@ -13,7 +13,7 @@ $(document).ready(function() {
             type: "POST",
             success: function(response) {
                 if (response.code === 200) {
-                    $(".card-body").html(response.tableComponents);
+                    $(".content-panel").html(response.tableComponents);
                     toastr.success(response.message, "Thông báo", {
                         timeOut: 3000
                     });
@@ -109,13 +109,18 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(data) {
                 if (data.code === 200) {
-                    $('.card-body').html(data.tableComponents);
+                    $('.content-panel').html(data.tableComponents);
                     toastr.success(data.message, "Thông báo", {
                         timeOut: 3000
                     });
                     $("#delCatModal").modal('hide');
+                } else {
+                    toastr.error(data.message, 'Thông báo', {
+                        timeOut: 3000
+                    });
+                    $("#delCatModal").modal('hide');
                 }
-            }
+            },
         });
     }
     $(this).on('click', '.btn-acceptDelCatJS', delCat);

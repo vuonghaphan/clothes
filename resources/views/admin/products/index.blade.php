@@ -8,13 +8,21 @@
                 <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
             </ol>
         </nav>
+        
+        @can('product_add')
         <a href="{{ route('product.create') }}"><button type="button" class="btn btn-info">Thêm mới</button></a>
+        @endcan
+
         <div class="row mt">
             <div class="col-md-12">
                 <div class="card-header py-3">
                     <h4 class="m-0 font-weight-bold text-info">Danh sách sản phẩm</h4>
                 </div>
-
+                {{-- <form action="#" class="pull-right mail-src-position">
+                    <div class="input-append">
+                      <input type="text" class="form-control " placeholder="Search Mail">
+                    </div>
+                  </form> --}}
                 <!-- table -->
                 @include('admin.products.components.table-components')
                 <!-- end table -->
