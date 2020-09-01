@@ -5,11 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
+use App\Models\Image_product;
 use App\Models\Product;
 use App\Traits\StorageImageTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use File;
+use Illuminate\Support\Facades\File;
+//use File;
+use Illuminate\Support\Facades\Storage;
+//use Storage;
+
 
 class ProductController extends Controller
 {
@@ -52,8 +57,11 @@ class ProductController extends Controller
             $data['slug'] = Str::slug($request->name);
             $data['img_name'] = $dataUploadImg['file_name'];
             $data['img_path'] = $dataUploadImg['file_path'];
-            Product::create($data);
+            $product = Product::create($data);
+            $upload = $this->multipleUploadProduct($request, 'image','product',$product);
             return redirect()->route('product.index')->with('success', 'Thêm sản phẩm thành công');
+        } else {
+            return back()->with('error', 'Thêm sản phẩm thất bại');
         }
     }
 
@@ -131,8 +139,35 @@ class ProductController extends Controller
             unlink($url_file);
         }
         $product->delete();
+        $image_product = Image_product::where('id_product',$id);
+        $image_product->delete();
         return response()->json([
             'message' => 'Xóa sản phẩm thành công',
         ], 200);
+    }
+    public  function imageProduct($id){
+        $product = Product::find($id);
+        $countImage = Image_product::where('id_product',$id)->count();
+        return view('admin.products.image-product', compact('product', 'countImage'));
+    }
+    public function createImageProduct(){
+        $product = Product::get();
+        return view('admin.products.components.add-image-product', compact('product'));
+    }
+    public function uploadImageProduct(Request $request)
+    {
+        $product = $request->id_product;
+
+        if ($request->hasFile('image')) {
+            foreach ($request->image as $file) {
+                $fileNameHash = str::random(10) . '.' . $file->getClientOriginalExtension();
+                $filePath = $file->storeAs('public/product/' . auth()->id(), $fileNameHash);
+                Image_product::create([
+                    'image_path' => \Illuminate\Support\Facades\Storage::url($filePath),
+                    'id_product' => $product
+                ]);
+            }
+            return redirect()->route('product.image', $product)->with('success','Thêm ảnh sản phẩm thành công');
+        }
     }
 }

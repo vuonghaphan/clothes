@@ -24,11 +24,11 @@ class MemberRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:2|max:255',
             'email' => 'required|email|unique:members,email,'.($this->member ?? ''),
+            'name' => 'required|min:2|max:255',
             'password' => ($this->member ? 'nullable' : 'required').'|min:6|max:255',
-            're_password' => 'same:password',
             'avatar' => ($this->member ? 'nullable' : 'required').'|image',
+            're_password' => 'same:password',
         ];
     }
     public function messages()

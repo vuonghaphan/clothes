@@ -57,7 +57,10 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapApiRoutes();
 
-        //
+        // client
+        $this->mapClientHomeRoutes();
+        $this->mapClientProductRoutes();
+        $this->mapClientCartRoutes();
     }
 
     /**
@@ -146,6 +149,24 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     // client
+    protected function mapClientHomeRoutes()
+    {
+        Route::middleware('web')
+            ->namespace('App\Http\Controllers\Client')
+            ->group(base_path('routes/client/home.php'));
+    }
 
+    protected function mapClientProductRoutes()
+    {
+        Route::middleware('web')
+            ->namespace('App\Http\Controllers\Client')
+            ->group(base_path('routes/client/product.php'));
+    }
+    protected function mapClientCartRoutes()
+    {
+        Route::middleware('web')
+            ->namespace('App\Http\Controllers\Client')
+            ->group(base_path('routes/client/cart.php'));
+    }
 
 }

@@ -54,5 +54,5 @@ class ProductRequest extends FormRequest
                 'img' => 'File upload'
             ];
         }
-    };
+    }
 

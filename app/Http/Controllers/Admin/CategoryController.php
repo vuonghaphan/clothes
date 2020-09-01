@@ -76,6 +76,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+
         $categories = Category::find($id);
         return response()->json($categories, 200);
     }
@@ -114,7 +115,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         if(($category->products)->count() > 0){
             return response()->json(['message'=>'Danh mục hiện còn sản phẩm', 'code' => 202], 202);
-        } 
+        }
         $category->delete();
         $categories = Category::all();
         $tableComponents = view('admin.categories.components.table-components', compact('categories'))->render();

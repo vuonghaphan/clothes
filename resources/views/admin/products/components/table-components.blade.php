@@ -33,7 +33,7 @@
                 </td>
                 <td><span class="label label-{{ $data->hot == 0 ? 'primary' : 'danger' }} label-mini">{{ $data->hot == 1 ? 'Hot' : 'Không' }}</span></td>
                 <td>
-                    <a href="" type="button" >
+                    <a href="{{ route('product.image', $data->id) }}" type="button" >
                         <button class="btn btn-warning btn-xs"><i class="fa fa-image "></i>
                         </button>
                     </a>

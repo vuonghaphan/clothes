@@ -5,6 +5,9 @@ namespace App\Models;
 use App\Models\Category;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * @method static find(int $id)
+ */
 class Member extends Authenticatable
 {
     protected $table = 'members';

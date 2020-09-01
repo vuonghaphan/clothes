@@ -86,6 +86,7 @@
                                             <div class="custom-file">
                                                 <input name="img" type="file" class="custom-file-input" id="input_img">
                                                 <label class="custom-file-label" for="input_img">Choose file</label>
+                                                <img width="300px" height="330px" src="{{ asset( $product->img_path ) }}">
                                             </div>
                                             {{ notifyError($errors,'img') }}
                                         </div>

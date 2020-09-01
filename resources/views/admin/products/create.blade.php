@@ -57,14 +57,6 @@
                                                 @endforeach
                                             </select>
                                         </div>
-
-                                        {{-- <div class="form-group">
-                                            <label><span style="color:black">Loại sản phẩm</label>
-                                            <select name="category" class="form-control">
-                                                <option value="1" selected>Nam</option>
-                                                <option value="2">Nữ</option>
-                                            </select>
-                                        </div> --}}
                                         <div class="form-group">
                                             <label><span style="color:black">Trạng thái</label>
                                             <select name="status" class="form-control">
@@ -87,6 +79,13 @@
                                                 <label class="custom-file-label" for="input_img">Choose file</label>
                                             </div>
                                             {{ notifyError($errors,'img') }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Chọn ảnh chi tiết</label><span class="text-danger"> *</span>
+                                            <div class="custom-file">
+                                                <input name="image[]" type="file" multiple class="custom-file-input" id="input_img">
+                                                <label class="custom-file-label" for="input_img"></label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

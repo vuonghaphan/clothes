@@ -16,10 +16,11 @@ Route::group(['prefix' => 'admin'], function () {
             'uses' => 'ProductController@create',
             'Middleware' => 'can:product_add'
         ]);
-        Route::post('',[
-            'as' => 'product.store',
-            'uses' => 'ProductController@store'
-        ]);
+         Route::post('',[
+             'as' => 'product.store',
+             'uses' => 'ProductController@store'
+
+         ]);
         Route::get('{product}/edit',[
             'as' => 'product.edit',
             'uses' => 'ProductController@edit',
@@ -34,8 +35,22 @@ Route::group(['prefix' => 'admin'], function () {
             'uses' => 'ProductController@destroy',
             'Middleware' => 'can:product_delete'
         ]);
+        Route::get('image/{product}',[
+            'as' => 'product.image',
+            'uses' => 'ProductController@imageProduct',
+//            'Middleware' => 'can:product_list'
+        ]);
+        Route::get('add-image',[
+            'as' => 'product.create.image',
+            'uses' => 'ProductController@createImageProduct',
+//            'Middleware' => 'can:product_list'
+        ]);
+        Route::post('image',[
+            'as' => 'product.add.image',
+            'uses' => 'ProductController@uploadImageProduct',
+//            'Middleware' => 'can:product_list'
+        ]);
     });
 })
-
 
 ?>

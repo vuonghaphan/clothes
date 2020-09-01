@@ -38,6 +38,13 @@
             @endcan
 
             <li class="sub-menu">
+                <a class="{{ (Request::is('admin/product/add-image') ? 'active' : '') }}" href="{{ route('product.create.image') }}">
+                    <i class="fa fa-th"></i>
+                    <span>Thêm ảnh Sản phẩm</span>
+                </a>
+            </li>
+
+            <li class="sub-menu">
                 <a href="">
                     <i class="fa fa-th"></i>
                     <span>Đơn hàng</span>
