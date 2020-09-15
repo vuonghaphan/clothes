@@ -9,20 +9,12 @@
                 </div>
 
                 <div class="right-top-bar flex-w h-full">
-                    <a href="#" class="flex-c-m trans-04 p-lr-25">
-                        Help & FAQs
-                    </a>
 
-                    <a href="#" class="flex-c-m trans-04 p-lr-25">
-                        My Account
+                    <a href="{{ route('get.login') }}" class="flex-c-m trans-04 p-lr-25">
+                        Đăng nhập
                     </a>
-
-                    <a href="#" class="flex-c-m trans-04 p-lr-25">
-                        EN
-                    </a>
-
-                    <a href="#" class="flex-c-m trans-04 p-lr-25">
-                        USD
+                    <a href="{{ route('get.register') }}" class="flex-c-m trans-04 p-lr-25">
+                        Đăng ký
                     </a>
                 </div>
             </div>
@@ -33,7 +25,7 @@
 
                 <!-- Logo desktop -->
                 <a href="#" class="logo">
-                    <img src="assets/client/images/icons/logo-01.png" alt="IMG-LOGO">
+                    <img src="/assets/client/images/icons/logo-01.png" alt="IMG-LOGO">
                 </a>
                 <!-- end logo desktop -->
                 <!-- Menu desktop -->
@@ -43,8 +35,6 @@
                             <a href="index.html">Home</a>
                             <ul class="sub-menu">
                                 <li><a href="index.html">Homepage 1</a></li>
-                                <li><a href="home-02.html">Homepage 2</a></li>
-                                <li><a href="home-03.html">Homepage 3</a></li>
                             </ul>
                         </li>
 
@@ -80,9 +70,11 @@
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
 
-                    <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-                        <i class="zmdi zmdi-favorite-outline"></i>
-                    </a>
+                    <div class="flex-c-m h-full p-lr-19">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
+                            <i class="zmdi zmdi-menu"></i>
+                        </div>
+                    </div>
                 </div>
                 <!-- end icon header -->
             </nav>
@@ -155,8 +147,6 @@
                 <a href="index.html">Home</a>
                 <ul class="sub-menu-m">
                     <li><a href="index.html">Homepage 1</a></li>
-                    <li><a href="home-02.html">Homepage 2</a></li>
-                    <li><a href="home-03.html">Homepage 3</a></li>
                 </ul>
                 <span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>

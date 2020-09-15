@@ -23,10 +23,12 @@ class HomeController extends Controller
     }
     public function about()
     {
+        \Assets::removeScripts(['slick', 'slick-custom']);
         return view('client.home.about');
     }
     public function contact()
     {
+        \Assets::removeScripts(['slick', 'slick-custom']);
         return view('client.home.contact');
     }
 

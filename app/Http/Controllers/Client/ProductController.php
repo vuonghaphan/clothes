@@ -16,9 +16,10 @@ class ProductController extends Controller
     }
     public function detail($prd_slug)
     {
-
-        $product = Product::whereSlug($prd_slug)->firstOrFail();
+        $hotProduct = Product::where('hot', 1)->get();
+        $product = Product::where('slug',$prd_slug)->firstOrFail();
         $imgThumb = ($product->images)->pluck('image_path');
-        return view('client.products.detail',compact('product', 'imgThumb'));
+        return view('client.products.detail',compact('product', 'imgThumb','hotProduct'));
     }
+
 }

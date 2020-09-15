@@ -22,4 +22,17 @@
 			return Auth::guard($type)->user() ? Auth::guard($type)->user()->$fiel : '';
 		}
 	}
+    function get_list_prd($price){
+        if ($price < 5000000) {
+            echo '001';
+        } elseif (5000000 < $price && $price < 10000000){
+            echo '002';
+        } elseif (10000000 < $price && $price < 15000000){
+            echo '003';
+        } elseif (15000000< $price && $price < 20000000){
+            echo '004';
+        } else {
+            echo '005';
+        }
+    }
 ?>

@@ -61,6 +61,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapClientHomeRoutes();
         $this->mapClientProductRoutes();
         $this->mapClientCartRoutes();
+        $this->mapClientLoginLogoutRoutes();
     }
 
     /**
@@ -169,4 +170,10 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/client/cart.php'));
     }
 
+    protected function mapClientLoginLogoutRoutes()
+    {
+        Route::middleware('web')
+            ->namespace('App\Http\Controllers\Client')
+            ->group(base_path('routes/client/login-logout.php'));
+    }
 }

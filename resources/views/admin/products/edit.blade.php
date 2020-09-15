@@ -39,7 +39,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label><span style="color:black">Miêu tả</label>
-                                            <textarea id="editor" name="description"  style="width: 100%;height: 100px;">{{ $product->article }}</textarea>
+                                            <textarea id="editor" name="description"  style="width: 100%;height: 100px;">{{ $product->description }}</textarea>
                                             {{ notifyError($errors,'description') }}
                                         </div>
                                         <div class="form-group">

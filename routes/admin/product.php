@@ -50,6 +50,10 @@ Route::group(['prefix' => 'admin'], function () {
             'uses' => 'ProductController@uploadImageProduct',
 //            'Middleware' => 'can:product_list'
         ]);
+        Route::get('delImage/{id}',[
+            'as' => 'product.delete.image',
+            'uses' => 'ProductController@delImage'
+        ]);
     });
 })
 

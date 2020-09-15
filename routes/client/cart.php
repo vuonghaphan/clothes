@@ -1,6 +1,5 @@
 <?php
 Route::group(['prefix' => 'gio-hang'], function() {
-
-//    Route::get('thanh-cong', 'CartController@Complete');
-
+//    Route::get('','CartController@getList')->name('list.cart');
+    Route::get('add/{id}','CartController@addCart')->name('add.cart');
 });

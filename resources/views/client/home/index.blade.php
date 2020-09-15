@@ -13,11 +13,27 @@
     <!-- end product  -->
 @endsection
 @push('clientJs')
-    <script type="javascript">
-        $(this).on("click", ".detailPrd", function () {
-            $(".js-name-detail").text($(this).data("name"));
-            $(".pricePrd").val($(this).data("price"));
-            $(".descriptPrd").text($(this).data("description"));
+    <script>
+        function addCart(e){
+            e.preventDefault();
+            let url = $(this).data('url');
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: 'json',
+                success: function (data){
+                    if (data.code === 200 ){
+                        toastr.success(data.message, "Thông báo", {
+                            timeOut: 3000
+                        });
+                    }
+                },
+                error: function (){
+                }
+            });
+        }
+        $(function (){
+            $('.add-to-cart').on('click', addCart);
         });
     </script>
 @endpush

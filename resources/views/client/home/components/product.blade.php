@@ -1,13 +1,13 @@
 <!-- Product -->
 <section class="bg0 p-t-23 p-b-140">
-    <div class="container">
+    <div class="container ">
         <div class="p-b-10">
             <h3 class="ltext-103 cl5">
                 Product Overview
             </h3>
         </div>
 
-        <div class="flex-w flex-sb-m p-b-52">
+        <div class="flex-w filter-tope-group flex-sb-m m-tb-10 p-b-52">
             <div class="flex-w flex-l-m filter-tope-group m-tb-10">
                 <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
                     Tất cả
@@ -20,8 +20,8 @@
 
             </div>
 
-            <div class="flex-w flex-c-m m-tb-10">
-                <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
+            <div class="flex-w filter-tope-group flex-c-m m-tb-10">
+                <div class="flex-c-m stext-106 filter-tope-group cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
                     <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
                     <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i> Filter
                 </div>
@@ -41,9 +41,9 @@
             <!-- end filter -->
         </div>
 
-        <div class="row isotope-grid">
+        <div class="row isotope-grid filter-tope-group">
             @foreach($products as $prd)
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ $prd->id_category }}">
+            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ $prd->id_category }} {{ get_list_prd($prd->price) }}">
                 <!-- Block2 -->
                 <div class="block2">
                     <div class="block2-pic hov-img0">
@@ -69,7 +69,7 @@
 
                         <div class="block2-txt-child2 flex-r p-t-3">
                             <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 ">
-                                <i class="zmdi zmdi-shopping-cart"></i>
+                                <a  data-url="{{ route('add.cart', $prd->id) }}" class="zmdi zmdi-shopping-cart add-to-cart"></a>
                             </div>
                         </div>
                     </div>
@@ -90,3 +90,5 @@
     </div>
 </section>
 <!-- end product  -->
+
+

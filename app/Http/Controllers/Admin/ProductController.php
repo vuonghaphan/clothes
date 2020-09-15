@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Image_product;
 use App\Models\Product;
 use App\Traits\StorageImageTrait;
+use Botble\Assets\Assets;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -169,5 +170,15 @@ class ProductController extends Controller
             }
             return redirect()->route('product.image', $product)->with('success','Thêm ảnh sản phẩm thành công');
         }
+    }
+    public function delImage($id)
+    {
+        $image = Image_product::find($id);
+        $url_file = substr(Image_product::select('image_path')->where('id', $id)->get(), 1);
+        if (File::exists($url_file)){
+            unlink($url_file);
+        }
+        $image->delete();
+        return back()->with('success','Xóa ảnh thành công');
     }
 }

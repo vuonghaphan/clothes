@@ -5,6 +5,8 @@
         .center{
             height: 250px;
         }
+        .img{
+        }
     </style>
 @endsection
 
@@ -27,14 +29,18 @@
                                         <div class=" col-md-12">
                                             <h5> Ảnh sản phẩm</h5>
                                         </div>
+
                                         @if ($countImage > 0)
 
-                                        @foreach(($product->images)->pluck('image_path') as $image)
+                                        @foreach(($product->images) as $image)
 
                                         <div class="col-md-3 center">
-                                            <div class="">
-                                                <img class="img-thumbnail rounded float-lg-right" style="height: 250px" style="width: 200px" src="{{ asset($image)}}">
-                                            </div>
+                                                <img class="img-thumbnail rounded float-lg-right img " style="height: 250px" style="width: 200px" src="{{ $image->image_path}}">
+                                                <a href="{{ route('product.delete.image', $image->id) }}"
+                                                        class="btn btn-danger delImg">
+                                                    <i class="fa fa-trash-o ">
+                                                    </i>
+                                                </a >
                                         </div>
                                         @endforeach
 
@@ -52,4 +58,11 @@
         </div>
     </div>
 @endsection
+@push('AdminAjax')
+    <script type="javascript">
+        $('.delImg').on('click', function (){
+           return alert('loz');
+        });
+    </script>
+@endpush
 
