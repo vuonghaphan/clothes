@@ -17,13 +17,10 @@ class AuthController extends Controller
 
     public function postLogin(Request $request)
     {
-        // $request->validate([
-        //     'email'=>'required|email',
-        //     'password'=>'required|min:1'
-        // ]);
         $data = $request->only('email', 'password');
         if (Auth::guard('members')->attempt($data)) {
-            return redirect()->route('admin.home')->with('success', 'Đăng nhập thành công');
+            $name = auth()->user()->name;
+            return redirect()->route('admin.home')->with('success', 'Đăng nhập thành công, xin chào '.$name);
         } else {
             return redirect()->back()->with('error', 'Đăng nhập thất bại. Xin vui lòng kiểm tra lại tài khoản');
         }

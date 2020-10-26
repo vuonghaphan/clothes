@@ -16,7 +16,7 @@ class CheckLoginWeb
     public function handle($request, Closure $next)
     {
         if(!get_data_user('web')){
-            return view('client.auth.login');
+            return redirect()->route('get.login')->with('warning', 'Bạn phải đăng nhập');
         }
         return $next($request);
     }

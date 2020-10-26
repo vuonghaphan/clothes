@@ -33,6 +33,9 @@
         <!-- deCatModal -->
         @include('admin.categories.components.del-modal')
         <!-- end-delCatModal-->
+        <ul class="pagination">
+            {{ $categories->render() }}
+        </ul>
     </div>
 </div>
 

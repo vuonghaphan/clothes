@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function getLogin()
     {
-        \Assets::removeScripts(['slick', 'slick-custom']);
+//        \Assets::removeScripts(['slick', 'slick-custom']);
         if (Auth::guard('web')->check()){
             return redirect()->route('home')->with('warning','Bạn đã đăng nhập');
         }

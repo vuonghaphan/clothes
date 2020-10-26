@@ -1,6 +1,5 @@
 <div class="wrap-header-cart js-panel-cart">
     <div class="s-full js-hide-cart"></div>
-
     <div class="header-cart flex-col-l p-l-65 p-r-25">
         <div class="header-cart-title flex-w flex-sb-m p-b-8">
                 <span class="mtext-103 cl2">
@@ -14,32 +13,35 @@
 
         <div class="header-cart-content flex-w js-pscroll">
             <ul class="header-cart-wrapitem w-full">
-
-                <li class="header-cart-item flex-w flex-t m-b-12">
+                @forelse(\Cart::getContent() as $item)
+                <li class="header-cart-item flex-w flex-t m-b-12 remove-cart{{ $item->id }}">
                     <div class="header-cart-item-img">
-                        <img src="assets/client/images/item-cart-01.jpg" alt="IMG">
+                        <img src="{{ asset($item->attributes->image) }}" alt="IMG">
                     </div>
-{{--                    @foreach(session()->get('cart') as $item){--}}
+
                     <div class="header-cart-item-txt p-t-8">
                         <a href="" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                            White Shirt Pleat
+                            {{ $item-> name }}
                         </a>
-
                         <span class="header-cart-item-info">
-								1 x $19.00
-							</span>
+								{{ '$ '. number_format($item->price) }} x {{ $item->quantity }}
+                        </span>
+                        @empty
+                            <span style="font-weight: bold">
+                                Giỏ hàng bạn trống!
+                            </span>
                     </div>
-{{--                    @endforeach--}}
                 </li>
+                @endforelse
             </ul>
 
             <div class="w-full">
                 <div class="header-cart-total w-full p-tb-40">
-                    Total: $75.00
+                    Total: {{ number_format(\Cart::getTotal()) }}
                 </div>
 
                 <div class="header-cart-buttons flex-w w-full">
-                    <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+                    <a href="{{ route('list.cart') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
                         View Cart
                     </a>
 

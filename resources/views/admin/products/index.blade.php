@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
             </ol>
         </nav>
-        
+
         @can('product_add')
         <a href="{{ route('product.create') }}"><button type="button" class="btn btn-info">Thêm mới</button></a>
         @endcan
@@ -30,7 +30,9 @@
                 <!-- delPrdModal -->
                 @include('admin.products.components.del-modal')
                 <!-- end DelPrd -->
-
+                <ul class="pagination">
+                    {{ $product->render() }}
+                </ul>
             </div>
         </div>
     </div>

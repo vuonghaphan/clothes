@@ -43,13 +43,14 @@
                     <span>Thêm ảnh Sản phẩm</span>
                 </a>
             </li>
-
+            @can('order_list')
             <li class="sub-menu">
-                <a href="">
+                <a href="{{ route('order.index') }}">
                     <i class="fa fa-th"></i>
                     <span>Đơn hàng</span>
                 </a>
             </li>
+            @endcan
 
             @can('member_list')
             <li class="sub-menu">

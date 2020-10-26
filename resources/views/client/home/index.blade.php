@@ -24,8 +24,9 @@
                 success: function (data){
                     if (data.code === 200 ){
                         toastr.success(data.message, "Thông báo", {
-                            timeOut: 3000
+                            timeOut: 10000
                         });
+                        $(".show-cart").text(data.quantity);
                     }
                 },
                 error: function (){

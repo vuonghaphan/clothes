@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="/">
     <link rel="icon" type="image/png" href={{ asset('assets/client/images/icons/favicon.png')}} />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     {!! Assets::renderHeader() !!}
     <link href="{{asset('assets/admin/css/toastr.css')}}" rel="stylesheet">
-
+    @stack('cssClient')
 </head>
 
 <body class="animsition">
@@ -54,7 +54,7 @@
 
 {!! Assets::renderFooter() !!}
 
-<script src="{{asset('assets/admin/lib/toastr.min.js')}}"></script>
+<script src="{{ asset('assets/admin/lib/toastr.min.js') }}"></script>
 
 @if (session('success'))
     <script type="text/javascript">

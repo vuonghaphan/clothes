@@ -9,9 +9,6 @@
             </ol>
         </nav>
 
-        <!--addCategory-->
-        {{-- @include('admin.categories.components.add-modal') --}}
-        <!--end-addCategory-->
 
         <!-- table -->
         <div class="row mt ">
@@ -20,8 +17,7 @@
                     <h3 class="m-0 font-weight-bold text-info">Danh sách danh mục</h3>
                 </div>
                 <div class="card-body">
-                    {{-- {{ $cat }} --}}
-                    {{-- @include('admin.categories.components.table-components') --}}
+                    <span style="font-size: 100px">xin chào {{ auth()->user()->name }}</span>
                 </div>
             </div>
         </div>

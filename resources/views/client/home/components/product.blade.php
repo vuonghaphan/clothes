@@ -61,9 +61,10 @@
                             <a href="{{ route('get.detail.product', $prd->slug) }}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                 {{ $prd->name }}
                             </a>
+                            <span style="color: red">{{ $prd->status == 0 ? 'Hết hàng': '' }}</span>
 
                             <span class="stext-105 cl3">
-									{{ number_format($prd->price) }}
+									{{ '$ '. number_format($prd->price) }}
 								</span>
                         </div>
 

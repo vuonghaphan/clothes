@@ -55,8 +55,8 @@ class AuthServiceProvider extends ServiceProvider
     }
     public function defineGateOrder (){
         Gate::define('order_list','App\Policies\OrderPolicy@view');
-        Gate::define('order_add','App\Policies\OrderPolicy@create');
-        Gate::define('order_edit','App\Policies\OrderPolicy@update');
+        Gate::define('order_detail','App\Policies\OrderPolicy@detail');
+        Gate::define('order_cancel','App\Policies\OrderPolicy@cancel');
         Gate::define('order_delete','App\Policies\OrderPolicy@delete');
     }
     public function defineGateRole (){
@@ -71,4 +71,5 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('permission_edit','App\Policies\PermissionPolicy@update');
         Gate::define('permission_delete','App\Policies\PermissionPolicy@delete');
     }
+
 }

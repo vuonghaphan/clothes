@@ -20,11 +20,13 @@
     <link href="{{asset('assets/admin/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/css/zabuto_calendar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/lib/gritter/css/jquery.gritter.css')}}" />
+    @stack('cssAdmin')
     <!-- Custom styles for this template -->
     <link href="{{asset('assets/admin/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('assets/admin/css/toastr.css')}}" rel="stylesheet">
     <link href="{{asset('assets/admin/css/style-responsive.css')}}" rel="stylesheet">
     <script src="{{asset('assets/admin/lib/chart-master/Chart.js')}}"></script>
+    <script src="https://kit.fontawesome.com/840d445b42.js" crossorigin="anonymous"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 
@@ -52,7 +54,7 @@
         <script src="{{asset('assets/admin/lib/common-scripts.js')}}"></script>
         <!-- this page -->
         <script src="{{asset('assets/admin/lib/toastr.min.js')}}"></script>
-        {{-- <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script> --}}
+
         @stack('AdminAjax')
         @if (session('success'))
             <script type="text/javascript">

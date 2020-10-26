@@ -20,4 +20,7 @@ class Product extends Model
     public  function images(){
         return $this->hasMany('App\Models\Image_product','id_product','id');
     }
+    public function orderDetail(){
+        return $this->belongsToMany(Order::class,'order_details');
+    }
 }

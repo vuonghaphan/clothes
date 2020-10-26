@@ -15,9 +15,11 @@ class HomeController extends Controller
         \Assets::addScriptsDirectly('assets/client/vendor/isotope/isotope.pkgd.min.js');
         $categories = Category::all();
         $products = Product::all();
+        $cart = session()->get('cart');
         $data = [
             'categories' => $categories,
-            'products' => $products
+            'products' => $products,
+            'cart' => $cart
         ];
         return view('client.home.index', $data);
     }
